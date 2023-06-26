@@ -46,7 +46,7 @@ function run() {
         try {
             const maxStr = core.getInput('max-files', { required: false });
             const max = parseInt(maxStr, 10) || 100;
-            const globber = yield glob.create(`static/examples/flange/*.json`);
+            const globber = yield glob.create(`static/examples/**/*.json`);
             const allFiles = yield globber.glob();
             const files = allFiles.slice(0, max);
             core.debug(`Files: ${files.join(',')}`);
