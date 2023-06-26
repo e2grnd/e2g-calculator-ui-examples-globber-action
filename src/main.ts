@@ -1,16 +1,13 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as glob from '@actions/glob'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    const basePath = core.getInput('search-base-path', {required: true})
+    const globber = await glob.create(`${basePath}/static/examples/**/*.json`)
+    const files = await globber.glob()
+    core.debug(`Files: ${files.join(',')}`)
+    core.setOutput('files', files)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

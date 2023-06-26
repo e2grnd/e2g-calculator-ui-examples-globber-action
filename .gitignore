@@ -97,3 +97,14 @@ Thumbs.db
 # Ignore built ts files
 __tests__/runner/*
 lib/**/*
+
+########################
+# Yarn package manager
+########################
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+# !/.yarn/cache
+/.pnp.*%

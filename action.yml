@@ -1,11 +1,10 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: "e2g-calculator-ui-examples-globber-action"
+description: "Globs example case files and outputs them as an array"
+author: "The Equity Engineering Group"
 inputs:
-  milliseconds: # change this
+  search-base-path:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: "path to the base of the calculator-ui repo"
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"
