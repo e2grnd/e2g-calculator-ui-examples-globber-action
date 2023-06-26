@@ -3,7 +3,6 @@ description: "Globs example case files and outputs them as an array"
 author: "The Equity Engineering Group"
 inputs:
   search-base-path:
-    required: true
     description: "path to the base of the calculator-ui repo"
 runs:
   using: "node16"
