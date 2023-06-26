@@ -44,8 +44,8 @@ const glob = __importStar(__nccwpck_require__(8090));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const basePath = core.getInput('search-base-path', { required: false });
-            const globber = yield glob.create(`${basePath || ''}/static/examples/**/*.json`);
+            // const basePath = core.getInput('search-base-path', {required: false})
+            const globber = yield glob.create(`static/examples/**/*.json`);
             const files = yield globber.glob();
             core.debug(`Files: ${files.join(',')}`);
             core.setOutput('files', files);
