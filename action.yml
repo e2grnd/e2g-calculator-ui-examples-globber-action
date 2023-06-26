@@ -2,8 +2,8 @@ name: "e2g-calculator-ui-examples-globber-action"
 description: "Globs example case files and outputs them as an array"
 author: "The Equity Engineering Group"
 inputs:
-  search-base-path:
-    description: "path to the base of the calculator-ui repo"
+  max-files:
+    description: "how many files to limit to"
 runs:
   using: "node16"
   main: "dist/index.js"

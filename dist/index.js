@@ -44,10 +44,11 @@ const glob = __importStar(__nccwpck_require__(8090));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            // const basePath = core.getInput('search-base-path', {required: false})
+            const maxStr = core.getInput('max-files', { required: false });
+            const max = parseInt(maxStr, 10) || 100;
             const globber = yield glob.create(`static/examples/**/*.json`);
             const files = yield globber.glob();
-            core.debug(`Files: ${files.join(',')}`);
+            core.debug(`Files: ${files.slice(0, max).join(',')}`);
             core.setOutput('files', files);
         }
         catch (error) {
