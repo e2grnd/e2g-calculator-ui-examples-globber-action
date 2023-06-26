@@ -3,10 +3,8 @@ import * as glob from '@actions/glob'
 
 async function run(): Promise<void> {
   try {
-    const basePath = core.getInput('search-base-path', {required: false})
-    const globber = await glob.create(
-      `${basePath || ''}/static/examples/**/*.json`
-    )
+    // const basePath = core.getInput('search-base-path', {required: false})
+    const globber = await glob.create(`/static/examples/**/*.json`)
     const files = await globber.glob()
     core.debug(`Files: ${files.join(',')}`)
     core.setOutput('files', files)
