@@ -56,8 +56,8 @@ function run() {
             const calcs = (yield fs_1.promises.readdir(path_1.default.resolve('src/calculators'), { withFileTypes: true }))
                 .filter(dirent => dirent.isDirectory())
                 .map(dirent => dirent.name)
-                .slice(0, max)
-                .filter(d => !excludeCalcs.includes(d));
+                .filter(d => !excludeCalcs.includes(d))
+                .slice(0, max);
             core.debug(`Calcs: ${calcs.join(',')}`);
             core.setOutput('calcs', calcs);
         }

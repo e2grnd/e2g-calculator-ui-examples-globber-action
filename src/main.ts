@@ -14,8 +14,8 @@ async function run(): Promise<void> {
     )
       .filter(dirent => dirent.isDirectory())
       .map(dirent => dirent.name)
-      .slice(0, max)
       .filter(d => !excludeCalcs.includes(d))
+      .slice(0, max)
     core.debug(`Calcs: ${calcs.join(',')}`)
     core.setOutput('calcs', calcs)
   } catch (error) {
