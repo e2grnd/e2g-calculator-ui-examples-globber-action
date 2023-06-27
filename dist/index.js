@@ -49,11 +49,15 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const maxStr = core.getInput('max-files', { required: false });
+            const excludeCalcs = (core.getInput('exclude-calcs') || '')
+                .split(',')
+                .map(i => i.trim());
             const max = parseInt(maxStr, 10) || 100;
-            const allCalcs = (yield fs_1.promises.readdir(path_1.default.resolve('src/calculators'), { withFileTypes: true }))
+            const calcs = (yield fs_1.promises.readdir(path_1.default.resolve('src/calculators'), { withFileTypes: true }))
                 .filter(dirent => dirent.isDirectory())
-                .map(dirent => dirent.name);
-            const calcs = allCalcs.slice(0, max);
+                .map(dirent => dirent.name)
+                .slice(0, max)
+                .filter(d => !excludeCalcs.includes(d));
             core.debug(`Calcs: ${calcs.join(',')}`);
             core.setOutput('calcs', calcs);
         }

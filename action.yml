@@ -4,6 +4,8 @@ author: "The Equity Engineering Group"
 inputs:
   max-files:
     description: "how many files to limit to"
+  exclude-calcs:
+    description: "comma-separated list of calc ids to exclude"
 outputs:
   calcs:
     description: array of calculator directories

@@ -5,13 +5,17 @@ import path from 'path'
 async function run(): Promise<void> {
   try {
     const maxStr = core.getInput('max-files', {required: false})
+    const excludeCalcs = (core.getInput('exclude-calcs') || '')
+      .split(',')
+      .map(i => i.trim())
     const max = parseInt(maxStr, 10) || 100
-    const allCalcs = (
+    const calcs = (
       await fs.readdir(path.resolve('src/calculators'), {withFileTypes: true})
     )
       .filter(dirent => dirent.isDirectory())
       .map(dirent => dirent.name)
-    const calcs = allCalcs.slice(0, max)
+      .slice(0, max)
+      .filter(d => !excludeCalcs.includes(d))
     core.debug(`Calcs: ${calcs.join(',')}`)
     core.setOutput('calcs', calcs)
   } catch (error) {
