@@ -9,13 +9,20 @@ async function run(): Promise<void> {
       .split(',')
       .map(i => i.trim())
     const max = parseInt(maxStr, 10) || 100
-    const calcs = (
+    const allCalcs = (
       await fs.readdir(path.resolve('src/calculators'), {withFileTypes: true})
     )
       .filter(dirent => dirent.isDirectory())
       .map(dirent => dirent.name)
-      .filter(d => !excludeCalcs.includes(d))
-      .slice(0, max)
+    const includeCalcs = (core.getInput('calcs') || '')
+      .split(',')
+      .map(i => i.trim())
+    let calcs = []
+    if (includeCalcs.length > 0) {
+      calcs = allCalcs.filter(d => includeCalcs.includes(d))
+    } else {
+      calcs = allCalcs.filter(d => !excludeCalcs.includes(d)).slice(0, max)
+    }
     core.debug(`Calcs: ${calcs.join(',')}`)
     core.setOutput('calcs', calcs)
   } catch (error) {

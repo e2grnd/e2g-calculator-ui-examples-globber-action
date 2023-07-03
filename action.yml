@@ -2,6 +2,8 @@ name: "e2g-calculator-ui-examples-globber-action"
 description: "Globs example case files and outputs them as an array"
 author: "The Equity Engineering Group"
 inputs:
+  calcs:
+    description: "comma-separated list of calc IDs to run"
   max-files:
     description: "how many files to limit to"
   exclude-calcs:
