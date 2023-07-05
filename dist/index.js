@@ -59,12 +59,9 @@ function run() {
             const includeCalcs = (core.getInput('calcs') || '')
                 .split(',')
                 .map(i => i.trim());
-            let calcs = [];
+            let calcs = allCalcs.filter(d => !excludeCalcs.includes(d)).slice(0, max);
             if (includeCalcs.length > 0) {
                 calcs = allCalcs.filter(d => includeCalcs.includes(d));
-            }
-            else {
-                calcs = allCalcs.filter(d => !excludeCalcs.includes(d)).slice(0, max);
             }
             core.debug(`Calcs: ${calcs.join(',')}`);
             core.setOutput('calcs', calcs);
