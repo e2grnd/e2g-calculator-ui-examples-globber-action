@@ -19,7 +19,7 @@ async function run(): Promise<void> {
     if (includeCalcs.length > 0) {
       calcs = allCalcs.filter(d => includeCalcs.includes(d))
     }
-    calcs = allCalcs.filter(d => !excludeCalcs.includes(d)).slice(0, max)
+    calcs = calcs.filter(d => !excludeCalcs.includes(d)).slice(0, max)
     core.debug(`Calcs: ${calcs.join(',')}`)
     core.setOutput('calcs', calcs)
   } catch (error) {
