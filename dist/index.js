@@ -52,13 +52,16 @@ function run() {
             const excludeCalcs = (core.getInput('exclude-calcs') || '')
                 .split(',')
                 .map(i => i.trim());
+            core.debug(`Exclude Calcs: ${excludeCalcs.join(',')}`);
             const max = parseInt(maxStr, 10) || 100;
             const allCalcs = (yield fs_1.promises.readdir(path_1.default.resolve('src/calculators'), { withFileTypes: true }))
                 .filter(dirent => dirent.isDirectory())
                 .map(dirent => dirent.name);
+            core.debug(`All Calcs: ${allCalcs}`);
             const includeCalcs = (core.getInput('calcs') || '')
                 .split(',')
                 .map(i => i.trim());
+            core.debug(`Include Calcs: ${includeCalcs.join(',')}`);
             let calcs = allCalcs.filter(d => !excludeCalcs.includes(d)).slice(0, max);
             if (includeCalcs.length > 0) {
                 calcs = allCalcs.filter(d => includeCalcs.includes(d));
