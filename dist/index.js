@@ -58,11 +58,12 @@ function run() {
             core.debug(`All Calcs: ${allCalcs}`);
             const includeCalcs = (core.getInput('calcs') || '').split(',').map(i => i.trim());
             core.debug(`Include Calcs: ${includeCalcs.join(',')}`);
-            let calcs = allCalcs.filter(d => !excludeCalcs.includes(d)).slice(0, max);
+            let calcs = allCalcs;
             core.debug(`Calcs after exclude: ${calcs.length} ${calcs.join(',')} ${typeof calcs}`);
             if (includeCalcs.length > 0) {
                 calcs = allCalcs.filter(d => includeCalcs.includes(d));
             }
+            calcs = allCalcs.filter(d => !excludeCalcs.includes(d)).slice(0, max);
             core.debug(`Calcs: ${calcs.join(',')}`);
             core.setOutput('calcs', calcs);
         }
