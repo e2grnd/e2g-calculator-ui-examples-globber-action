@@ -13,7 +13,8 @@ async function run(): Promise<void> {
       .map(dirent => dirent.name)
     core.debug(`All Calcs: ${allCalcs}`)
     const includeCalcs = (core.getInput('calcs') || '').split(',').map(i => i.trim())
-    core.debug(`Include Calcs: ${includeCalcs.join(',')}`)
+    core.debug(`Include Calcs raw: ${core.getInput('calcs')}`)
+    core.debug(`Include Calcs (${includeCalcs.length}): ${includeCalcs.join(',')}`)
     let calcs = allCalcs
     core.debug(`Calcs after exclude: ${calcs.length} ${calcs.join(',')} ${typeof calcs}`)
     if (includeCalcs.length > 0) {
