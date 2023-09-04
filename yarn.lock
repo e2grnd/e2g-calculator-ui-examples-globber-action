@@ -195,10 +195,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.16.18":
-  version: 18.16.18
-  resolution: "@types/node@npm:18.16.18"
-  checksum: d32d8a0a04cd3f5ecb361bcb42f3a07623881ac90d680e06bf626defb3c663a94860d11690babe607cfe67265eceeb8a59ba5fe40c0e49f5a1b01e0088640469
+"@types/node@npm:^20.5.9":
+  version: 20.5.9
+  resolution: "@types/node@npm:20.5.9"
+  checksum: 717490e94131722144878b4ca1a963ede1673bb8f2ef78c2f5b50b918df6dc9b35e7f8283e5c2a7a9f137730f7c08dc6228e53d4494a94c9ee16881e6ce6caed
   languageName: node
   linkType: hard
 
@@ -3041,7 +3041,7 @@ __metadata:
   dependencies:
     "@actions/core": ^1.10.0
     "@actions/glob": ^0.4.0
-    "@types/node": ^18.16.18
+    "@types/node": ^20.5.9
     "@typescript-eslint/parser": ^5.60.0
     "@vercel/ncc": ^0.36.1
     eslint: ^8.43.0
